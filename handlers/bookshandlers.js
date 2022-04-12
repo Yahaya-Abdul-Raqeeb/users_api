@@ -1,11 +1,4 @@
-const fs =require("fs")
-
-let books =[];
-fs.readFile(".../data/books", (err, data)=>{
-if (err) throw err;
-books.JSON.parse(data);
-
-})
+const books=require("../data/books")
 
 const booksHandlers ={};
 booksHandlers.byCategory =(req, res, next)=>{
@@ -16,7 +9,7 @@ if(category){
 }
 
 }
-const booksHandlers ={};
+
 booksHandlers.byAuthor =(req, res, next)=>{
 const author=req.query.author;
 if(author){
@@ -24,4 +17,5 @@ if(author){
     return res.status(200).json({success:true, data:_books})
 }
 
-}
+} 
+module.exports=booksHandlers
